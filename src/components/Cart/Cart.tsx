@@ -4,7 +4,7 @@ import { Svg } from "./Cart.styled";
 
 const Cart: React.FC = () => {
   return (
-    <Svg>
+    <Svg viewBox="0 0 32 32">
       <use href={`${logo}#icon-cart`}></use>
     </Svg>
   );
