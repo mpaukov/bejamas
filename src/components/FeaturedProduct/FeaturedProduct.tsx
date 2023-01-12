@@ -18,7 +18,7 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
   } = item;
 
   let src, alt: string;
-  let description: [] | string | null = "";
+  let description: [] | string | null;
 
   if (typeof image === "object") {
     src = image.src;
@@ -30,7 +30,21 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
     src = "";
     alt = "";
   }
-  console.log("typeof", typeof []);
+
+  if (details === null) {
+    description = null;
+  } else if (typeof details === "object") {
+    if (Array.isArray(details)) {
+      description = details.join(" ");
+    } else {
+      description = details.description;
+    }
+  } else if (typeof details === "string") {
+    description = details;
+  } else {
+    description = "";
+  }
+
   return (
     <div>
       <h1>{name}</h1>
