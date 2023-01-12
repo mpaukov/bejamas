@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../App";
-import { Section, Title } from "./FeaturedProduct.styled";
+import { Section, TextOnPic, Title, Wrapper } from "./FeaturedProduct.styled";
 
 type Props = {
   item: Product;
@@ -49,7 +49,12 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
   return (
     <Section>
       <Title>{name}</Title>
-      <img src={src} alt={alt} />
+      <Wrapper>
+        <img src={src} alt={alt} />
+        <TextOnPic>
+          <p>Photo of the day</p>
+        </TextOnPic>
+      </Wrapper>
       <button type="button">Add to Cart</button>
       <p>About the {name}</p>
       <p>{description}</p>
