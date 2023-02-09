@@ -1,5 +1,8 @@
 import React from "react";
 import { Product } from "../App";
+import Button from "../Button/Button";
+import Description from "../Description/Description";
+import TitleMinor from "../Title/Title";
 import { Section, TextOnPic, Title, Wrapper } from "./FeaturedProduct.styled";
 
 type Props = {
@@ -18,8 +21,11 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
     details,
   } = item;
 
+  let dimmentions: { width: number; height: number } = { width: 0, height: 0 };
+  let size: number = 0;
+
   let src, alt: string;
-  let description: [] | string | null;
+  let description: [] | string | null = null;
 
   if (typeof image === "object") {
     src = image.src;
@@ -35,10 +41,11 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
   if (details === null) {
     description = null;
   } else if (typeof details === "object") {
-    if (Array.isArray(details)) {
+    if (!Array.isArray(details)) {
+      dimmentions = details.dimmentions;
+      size = details.size;
+    } else if (Array.isArray(details)) {
       description = details.join(" ");
-    } else {
-      description = details.description;
     }
   } else if (typeof details === "string") {
     description = details;
@@ -55,9 +62,17 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
           <p>Photo of the day</p>
         </TextOnPic>
       </Wrapper>
-      <button type="button">Add to Cart</button>
-      <p>About the {name}</p>
-      <p>{description}</p>
+      <Button />
+
+      <TitleMinor>About the {name}</TitleMinor>
+      <Description>{description}</Description>
+
+      <TitleMinor>People also buy</TitleMinor>
+      <TitleMinor>Details</TitleMinor>
+      <p>
+        Size: {dimmentions?.width} x {dimmentions?.height} pixel
+      </p>
+      <p>Size: {size / 1000} Mb</p>
     </Section>
   );
 };
