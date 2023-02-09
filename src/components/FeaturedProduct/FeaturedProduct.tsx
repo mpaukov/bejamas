@@ -3,7 +3,14 @@ import { Product } from "../App";
 import Button from "../Button/Button";
 import Description from "../Description/Description";
 import TitleMinor from "../Title/Title";
-import { Section, TextOnPic, Title, Wrapper } from "./FeaturedProduct.styled";
+import {
+  Item,
+  List,
+  Section,
+  TextOnPic,
+  Title,
+  Wrapper,
+} from "./FeaturedProduct.styled";
 
 type Props = {
   item: Product;
@@ -23,6 +30,7 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
 
   let dimmentions: { width: number; height: number } = { width: 0, height: 0 };
   let size: number = 0;
+  let recommendations: { src: string; alt: string }[] = [{ src: "", alt: "" }];
 
   let src, alt: string;
   let description: [] | string | null = null;
@@ -43,6 +51,7 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
   } else if (typeof details === "object") {
     if (!Array.isArray(details)) {
       dimmentions = details.dimmentions;
+      recommendations = details.recommendations;
       size = details.size;
     } else if (Array.isArray(details)) {
       description = details.join(" ");
@@ -68,6 +77,14 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
       <Description>{description}</Description>
 
       <TitleMinor>People also buy</TitleMinor>
+      <List>
+        {recommendations.map((item, index) => (
+          <Item key={index}>
+            <img src={item.src} alt={item.alt} />
+          </Item>
+        ))}
+      </List>
+
       <TitleMinor>Details</TitleMinor>
       <p>
         Size: {dimmentions?.width} x {dimmentions?.height} pixel

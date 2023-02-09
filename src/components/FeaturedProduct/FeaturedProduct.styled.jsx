@@ -53,3 +53,15 @@ export const TextOnPic = styled.div`
     height: 67px;
   }
 `;
+
+export const List = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  margin-left: -12px;
+  margin-right: -12px;
+`;
+export const Item = styled.li`
+  width: calc(100% / 3 - 25px);
+  margin: 12px;
+`;
