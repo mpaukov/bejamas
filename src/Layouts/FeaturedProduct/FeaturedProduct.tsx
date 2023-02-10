@@ -1,12 +1,11 @@
 import React from "react";
-import { Product } from "../App";
-import Button from "../Button/Button";
-import Description from "../Description/Description";
-import TitleMinor from "../Title/Title";
+import { Product } from "../../Types/Types";
+import Button from "../../components/Button/Button";
+import Description from "../../components/Description/Description";
+import TitleMinor from "../../components/Title/Title";
 import {
   Item,
   List,
-  Section,
   TextOnPic,
   Title,
   Wrapper,
@@ -63,7 +62,7 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
   }
 
   return (
-    <Section>
+    <>
       <Title>{name}</Title>
       <Wrapper>
         <img src={src} alt={alt} />
@@ -90,7 +89,7 @@ const FeaturedProduct: React.FC<Props> = ({ item }) => {
         Size: {dimmentions?.width} x {dimmentions?.height} pixel
       </p>
       <p>Size: {size / 1000} Mb</p>
-    </Section>
+    </>
   );
 };
 
