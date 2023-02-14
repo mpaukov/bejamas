@@ -1,12 +1,20 @@
-import React from "react";
-import { Text } from "./Title.styled";
+import React, { ReactNode } from "react";
+import { TitleStyle, TitleProductsStyle } from "./Title.styled";
 
 type Props = {
-  children: string | string[];
+  children: ReactNode;
+  tag?: string;
 };
 
-const TitleMinor: React.FC<Props> = ({ children }) => {
-  return <Text>{children}</Text>;
+export const Title: React.FC<Props> = ({ tag = "h2", children }) => {
+  return <TitleStyle tag={tag}>{children}</TitleStyle>;
 };
 
-export default TitleMinor;
+type PropsProducts = {
+  children: ReactNode;
+  main?: boolean;
+};
+
+export const TitleProducts: React.FC<PropsProducts> = ({ main, children }) => {
+  return <TitleProductsStyle main={main}>{children}</TitleProductsStyle>;
+};

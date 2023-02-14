@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import data from "./assets/json/products.json";
-import { Product } from "./Types/Types";
-import Header from "./Layouts/Header/Header";
+import { Product } from "./types/Types";
 import Section from "./components/Section/Section";
-import FeaturedProduct from "./Layouts/FeaturedProduct/FeaturedProduct";
+import Header from "./layouts/Header/Header";
+import FeaturedProduct from "./layouts/FeaturedProduct/FeaturedProduct";
+import Products from "./layouts/Products/Products";
 
 const App: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>(() =>
@@ -38,7 +39,7 @@ const App: React.FC = () => {
       <Section>
         {featuredProducts && <FeaturedProduct item={featuredProduct} />}
       </Section>
-      <Section>{products && <p>Photography</p>}</Section>
+      <Section>{products && <Products items={products} />}</Section>
     </>
   );
 };

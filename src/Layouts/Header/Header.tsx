@@ -1,8 +1,8 @@
 import React from "react";
-import Cart from "../../components/Cart/Cart";
+import Cart from "../../components/Icons/Cart/Cart";
 import Link from "../../components/Link/Link";
-import Logo from "../../components/Logo/Logo";
-import { HeaderStyle } from "./Header.stuled";
+import Logo from "../../components/Icons/Logo/Logo";
+import { HeaderStyle } from "./Header.styled";
 
 const Header: React.FC = () => {
   return (

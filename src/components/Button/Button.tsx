@@ -1,12 +1,12 @@
-import React from "react";
-import { Btn } from "./Button.styled";
+import React, { ReactNode } from "react";
+import { ButtonStyle } from "./Button.styled";
 
-const Button: React.FC = () => {
-  return (
-    <>
-      <Btn>Add to Card</Btn>
-    </>
-  );
+type Props = {
+  children: ReactNode;
+};
+
+const Button: React.FC<Props> = ({ children }) => {
+  return <ButtonStyle>{children}</ButtonStyle>;
 };
 
 export default Button;
